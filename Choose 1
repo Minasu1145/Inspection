@@ -1,0 +1,539 @@
+local function createESP(part, color, playerPosition, customName)
+    local existingBillboard = part:FindFirstChildOfClass("BillboardGui")
+    if (existingBillboard) then
+        existingBillboard:Destroy()
+    end
+
+    local billboard = Instance.new("BillboardGui")
+    billboard.Adornee = part
+    billboard.Parent = part
+    billboard.Size = UDim2.new(0, 200, 0, 50)
+    billboard.StudsOffset = Vector3.new(0, -part.Size.Y/0.6 - 0, 0)
+    billboard.AlwaysOnTop = true
+
+    local textLabel = Instance.new("TextLabel")
+    textLabel.Parent = billboard
+    textLabel.Size = UDim2.new(1, 0, 1, 0)
+    textLabel.BackgroundTransparency = 1
+    textLabel.TextColor3 = color
+    textLabel.TextStrokeTransparency = 0
+    textLabel.Font = Enum.Font.SourceSans
+    textLabel.TextSize = 14
+    textLabel.Text = customName
+    --  .. "\n " .. math.floor((playerPosition - part.Position).Magnitude) .. " "
+end
+
+local function createHighlight(part, highlightColor)
+    local existingHighlight = part:FindFirstChildOfClass("Highlight")
+    if (existingHighlight) then
+        existingHighlight:Destroy()
+    end
+
+    local highlight = Instance.new("Highlight")
+    highlight.Parent = part
+    highlight.Adornee = part
+    highlight.FillColor = Color3.fromRGB(0, 0, 0)
+    highlight.OutlineColor = highlightColor
+    highlight.FillTransparency = 1
+    highlight.OutlineTransparency = 0
+end
+
+while (true) do
+    local playerPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+
+    for _, part in pairs(workspace:GetDescendants()) do
+        if part:IsA("BasePart") and (part.Name == "ItemCoin" or part.Name == "ItemPartyCupcake" or (part.Name == "Body" and part.Parent and part.Parent.Name == "Parrot") or (part.Name == "Torso" and part.Parent and part.Parent.Name == "Freddle1")) then
+            -- กำหนดชื่อที่กำหนดเองสำหรับ ItemCoin, ItemPartyCupcake, Parrot.Body หรือ Freddle1.Torso
+            local customName
+            if part.Name == "ItemCoin" then
+                customName = "Coin"
+            elseif part.Name == "ItemPartyCupcake" then
+                customName = "Cupcake"
+            elseif part.Name == "Body" and part.Parent and part.Parent.Name == "Parrot" then
+                customName = "Parrot"
+            elseif part.Name == "Torso" and part.Parent and part.Parent.Name == "Freddle1" then
+                customName = "Freddle"
+            end
+            local espColor = Color3.fromRGB(0, 255, 0)
+
+            createESP(part, espColor, playerPosition, customName)
+            
+            createHighlight(part, espColor)
+        end
+    end
+
+    -- Five Nights at Freddy's 1
+    local freddy = workspace:FindFirstChild("Freddy")
+    if (freddy and freddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = freddy.HumanoidRootPart
+
+        local customName = "Freddy"
+        local espColor = Color3.fromRGB(87, 46, 28)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(freddy, espColor)
+    end
+
+    local Bonnie = workspace:FindFirstChild("Bonnie")
+    if (Bonnie and Bonnie:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Bonnie.HumanoidRootPart
+
+        local customName = "Bonnie"
+        local espColor = Color3.fromRGB(75, 38, 81)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Bonnie, espColor)
+    end
+
+    local Chica = workspace:FindFirstChild("Chica")
+    if (Chica and Chica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Chica.HumanoidRootPart
+
+        local customName = "Chica"
+        local espColor = Color3.fromRGB(149, 134, 19)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Chica, espColor)
+    end
+
+    local Foxy = workspace:FindFirstChild("Foxy")
+    if (Foxy and Foxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Foxy.HumanoidRootPart
+
+        local customName = "Foxy"
+        local espColor = Color3.fromRGB(126, 24, 19)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Foxy, espColor)
+    end
+    
+    -- Five Nights at Freddy's 2
+    local ToyFreddy = workspace:FindFirstChild("Toy Freddy")
+    if (ToyFreddy and ToyFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = ToyFreddy.HumanoidRootPart
+
+        local customName = "Toy Freddy"
+        local espColor = Color3.fromRGB(161, 71, 37)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(ToyFreddy, espColor)
+    end
+
+    local toyBonnie = workspace:FindFirstChild("Toy Bonnie")
+    if (toyBonnie and toyBonnie:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = toyBonnie.HumanoidRootPart
+
+        local customName = "Toy Bonnie"
+        local espColor = Color3.fromRGB(77, 205, 225)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(toyBonnie, espColor)
+    end
+
+    local ToyChica = workspace:FindFirstChild("Toy Chica")
+    if (ToyChica and ToyChica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = ToyChica.HumanoidRootPart
+
+        local customName = "Toy Chica"
+        local espColor = Color3.fromRGB(188, 149, 35)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(ToyChica, espColor)
+    end
+
+    local ToyFoxy = workspace:FindFirstChild("Toy Foxy")
+    if (ToyFoxy and ToyFoxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = ToyFoxy.HumanoidRootPart
+
+        local customName = "Toy Foxy"
+        local espColor = Color3.fromRGB(163, 118, 157)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(ToyFoxy, espColor)
+    end
+
+    local Mangle = workspace:FindFirstChild("Mangle")
+    if (Mangle and Mangle:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Mangle.HumanoidRootPart
+
+        local customName = "Mangle"
+        local espColor = Color3.fromRGB(163, 110, 157)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Mangle, espColor)
+    end
+
+    local bb = workspace:FindFirstChild("BB")
+    if (bb and bb:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = bb.HumanoidRootPart
+
+        local customName = "BB"
+        local espColor = Color3.fromRGB(48, 63, 159)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(bb, espColor)
+    end
+
+    local JJ = workspace:FindFirstChild("JJ")
+    if (JJ and JJ:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = JJ.HumanoidRootPart
+
+        local customName = "JJ"
+        local espColor = Color3.fromRGB(126, 66, 163)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(JJ, espColor)
+    end
+
+    local Marionette = workspace:FindFirstChild("Marionette")
+    if (Marionette and Marionette:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Marionette.HumanoidRootPart
+
+        local customName = "Marionette"
+        local espColor = Color3.fromRGB(87, 57, 163)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Marionette, espColor)
+    end
+
+    local WitheredFreddy = workspace:FindFirstChild("Withered Freddy")
+    if (WitheredFreddy and WitheredFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = WitheredFreddy.HumanoidRootPart
+
+        local customName = "Withered Freddy"
+        local espColor = Color3.fromRGB(67, 37, 24)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(WitheredFreddy, espColor)
+    end
+
+    local WitheredBonnie = workspace:FindFirstChild("Withered Bonnie")
+    if (WitheredBonnie and WitheredBonnie:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = WitheredBonnie.HumanoidRootPart
+
+        local customName = "Withered Bonnie"
+        local espColor = Color3.fromRGB(40, 60, 122)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(WitheredBonnie, espColor)
+    end
+
+    local WitheredChica = workspace:FindFirstChild("Withered Chica")
+    if (WitheredChica and WitheredChica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = WitheredChica.HumanoidRootPart
+
+        local customName = "Withered Chica"
+        local espColor = Color3.fromRGB(143, 127, 39)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(WitheredChica, espColor)
+    end
+
+    local WitheredFoxy = workspace:FindFirstChild("Withered Foxy")
+    if (WitheredFoxy and WitheredFoxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = WitheredFoxy.HumanoidRootPart
+
+        local customName = "Withered Foxy"
+        local espColor = Color3.fromRGB(112, 47, 47)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(WitheredFoxy, espColor)
+    end
+
+    local GoldenFreddy = workspace:FindFirstChild("Golden Freddy")
+    if (GoldenFreddy and GoldenFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = GoldenFreddy.HumanoidRootPart
+
+        local customName = "Golden Freddy"
+        local espColor = Color3.fromRGB(171, 141, 80)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(GoldenFreddy, espColor)
+    end
+
+    -- Five Nights at Freddy's 3
+    local Springtrap = workspace:FindFirstChild("Springtrap")
+    if (Springtrap and Springtrap:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Springtrap.HumanoidRootPart
+
+        local customName = "Springtrap"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Springtrap, espColor)
+    end
+
+    local PhantomFreddy = workspace:FindFirstChild("Phantom Freddy")
+    if (PhantomFreddy and PhantomFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomFreddy.HumanoidRootPart
+
+        local customName = "Phantom Freddy"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomFreddy, espColor)
+    end
+
+    local PhantomChica = workspace:FindFirstChild("Phantom Chica")
+    if (PhantomChica and PhantomChica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomChica.HumanoidRootPart
+
+        local customName = "Phantom Chica"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomChica, espColor)
+    end
+
+    local PhantomFoxy = workspace:FindFirstChild("Phantom Foxy")
+    if (PhantomFoxy and PhantomFoxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomFoxy.HumanoidRootPart
+
+        local customName = "Phantom Foxy"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomFoxy, espColor)
+    end
+
+    local PhantomMangle = workspace:FindFirstChild("Phantom Mangle")
+    if (PhantomMangle and PhantomMangle:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomMangle.HumanoidRootPart
+
+        local customName = "Phantom Mangle"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomMangle, espColor)
+    end
+
+    local PhantomBalloonBoy = workspace:FindFirstChild("Phantom Balloon Boy")
+    if (PhantomBalloonBoy and PhantomBalloonBoy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomBalloonBoy.HumanoidRootPart
+
+        local customName = "Phantom Balloon Boy"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomBalloonBoy, espColor)
+    end
+
+    local PhantomMarionette = workspace:FindFirstChild("Phantom Marionette")
+    if (PhantomMarionette and PhantomMarionette:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomMarionette.HumanoidRootPart
+
+        local customName = "Phantom Marionette"
+        local espColor = Color3.fromRGB(65, 133, 58)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(PhantomMarionette, espColor)
+    end
+
+    -- Five Nights at Freddy's 4
+    local NightmareFreddy = workspace:FindFirstChild("Nightmare Freddy")
+    if (NightmareFreddy and NightmareFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareFreddy.HumanoidRootPart
+
+        local customName = "Nightmare Freddy"
+        local espColor = Color3.fromRGB(79, 49, 17)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareFreddy, espColor)
+    end
+
+    local NightmareBonnie = workspace:FindFirstChild("Nightmare Bonnie")
+    if (NightmareBonnie and NightmareBonnie:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareBonnie.HumanoidRootPart
+
+        local customName = "Nightmare Bonnie"
+        local espColor = Color3.fromRGB(17, 35, 79)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareBonnie, espColor)
+    end
+
+    local NightmareChica = workspace:FindFirstChild("Nightmare Chica")
+    if (NightmareChica and NightmareChica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareChica.HumanoidRootPart
+
+        local customName = "Nightmare Chica"
+        local espColor = Color3.fromRGB(102, 64, 21)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareChica, espColor)
+    end
+
+    local NightmareFoxy = workspace:FindFirstChild("Nightmare Foxy")
+    if (NightmareFoxy and NightmareFoxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareFoxy.HumanoidRootPart
+
+        local customName = "Nightmare Foxy"
+        local espColor = Color3.fromRGB(102, 40, 21)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareFoxy, espColor)
+    end
+
+    local NightmareMangle = workspace:FindFirstChild("Nightmare Mangle")
+    if (NightmareMangle and NightmareMangle:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareMangle.HumanoidRootPart
+
+        local customName = "Nightmare Mangle"
+        local espColor = Color3.fromRGB(97, 21, 102)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareMangle, espColor)
+    end
+
+    local NightmareFredbear = workspace:FindFirstChild("Nightmare Fredbear")
+    if (NightmareFredbear and NightmareFredbear:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareFredbear.HumanoidRootPart
+
+        local customName = "Nightmare Fredbear"
+        local espColor = Color3.fromRGB(21, 102, 99)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareFredbear, espColor)
+    end
+
+    local Nightmare = workspace:FindFirstChild("Nightmare")
+    if (Nightmare and Nightmare:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Nightmare.HumanoidRootPart
+
+        local customName = "Nightmare"
+        local espColor = Color3.fromRGB(78, 92, 91)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Nightmare, espColor)
+    end
+
+    local Nightmarionne = workspace:FindFirstChild("Nightmarionne")
+    if (Nightmarionne and Nightmarionne:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Nightmarionne.HumanoidRootPart
+
+        local customName = "Nightmarionne"
+        local espColor = Color3.fromRGB(219, 219, 219)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Nightmarionne, espColor)
+    end
+
+    local NightmareBB = workspace:FindFirstChild("Nightmare BB")
+    if (NightmareBB and NightmareBB:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = NightmareBB.HumanoidRootPart
+
+        local customName = "Nightmare BB"
+        local espColor = Color3.fromRGB(58, 28, 97)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(NightmareBB, espColor)
+    end
+
+    -- Five Nights at Freddy's: Sister Location
+    local CircusBaby = workspace:FindFirstChild("Circus Baby")
+    if (CircusBaby and CircusBaby:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = CircusBaby.HumanoidRootPart
+
+        local customName = "Circus Baby"
+        local espColor = Color3.fromRGB(201, 46, 103)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(CircusBaby, espColor)
+    end
+
+    local Ballora = workspace:FindFirstChild("Ballora")
+    if (Ballora and Ballora:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Ballora.HumanoidRootPart
+
+        local customName = "Ballora"
+        local espColor = Color3.fromRGB(46, 92, 201)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Ballora, espColor)
+    end
+
+    local FuntimeFreddy = workspace:FindFirstChild("Funtime Freddy")
+    if (FuntimeFreddy and FuntimeFreddy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = FuntimeFreddy.HumanoidRootPart
+
+        local customName = "Funtime Freddy"
+        local espColor = Color3.fromRGB(126, 46, 201)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(FuntimeFreddy, espColor)
+    end
+
+    local Ennard = workspace:FindFirstChild("Ennard")
+    if (Ennard and Ennard:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = Ennard.HumanoidRootPart
+
+        local customName = "Ennard"
+        local espColor = Color3.fromRGB(173, 151, 194)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(Ennard, espColor)
+    end
+
+    local FuntimeFoxy = workspace:FindFirstChild("Funtime Foxy")
+    if (FuntimeFoxy and FuntimeFoxy:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = FuntimeFoxy.HumanoidRootPart
+
+        local customName = "Funtime Foxy"
+        local espColor = Color3.fromRGB(181, 42, 160)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(FuntimeFoxy, espColor)
+    end
+
+    local FuntimeChica = workspace:FindFirstChild("Funtime Chica")
+    if (FuntimeChica and FuntimeChica:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = FuntimeChica.HumanoidRootPart
+
+        local customName = "Funtime Chica"
+        local espColor = Color3.fromRGB(232, 158, 230)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(FuntimeChica, espColor)
+    end
+
+    wait(3)
+end
