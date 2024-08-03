@@ -8,7 +8,7 @@ local function createESP(part, color, playerPosition, customName)
     billboard.Adornee = part
     billboard.Parent = part
     billboard.Size = UDim2.new(0, 200, 0, 50)
-    billboard.StudsOffset = Vector3.new(0, -part.Size.Y/0.7 - 0, 0)
+    billboard.StudsOffset = Vector3.new(0, -part.Size.Y/0.4 - 0, 0)
     billboard.AlwaysOnTop = true
 
     local textLabel = Instance.new("TextLabel")
