@@ -209,18 +209,6 @@ while (true) do
         createHighlight(Minireenas, espColor)
     end
 
-    local Mr.Hippo = workspace:FindFirstChild("Mr. Hippo")
-    if (Mr.Hippo and Mr.Hippo:FindFirstChild("HumanoidRootPart")) then
-        local humanoidRootPart = Mr.Hippo.HumanoidRootPart
-
-        local customName = "Mr. Hippo"
-        local espColor = Color3.fromRGB(132, 67, 153)
-
-        createESP(humanoidRootPart, espColor, playerPosition, customName)
-
-        createHighlight(Mr.Hippo, espColor)
-    end
-
     local PhoneGuy = workspace:FindFirstChild("Phone Guy")
     if (PhoneGuy and PhoneGuy:FindFirstChild("HumanoidRootPart")) then
         local humanoidRootPart = PhoneGuy.HumanoidRootPart
