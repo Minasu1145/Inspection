@@ -535,5 +535,14 @@ while (true) do
         createHighlight(FuntimeChica, espColor)
     end
 
-    wait(3)
+    wait(1)
 end
+
+local player = game.Players.LocalPlayer
+player.CharacterAdded:Connect(function(character)
+    -- เริ่มฟังก์ชัน updateESP เมื่อ character ถูกสร้างใหม่
+    coroutine.wrap(updateESP)()
+end)
+
+-- เรียก updateESP ครั้งแรกสำหรับ character ปัจจุบัน
+coroutine.wrap(updateESP)()
