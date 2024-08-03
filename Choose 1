@@ -537,3 +537,17 @@ while (true) do
 
     wait(1)
 end
+
+local player = game.Players.LocalPlayer
+local function onCharacterAdded(character)
+    -- เริ่มฟังก์ชัน updateESP เมื่อ character ถูกสร้างใหม่
+    coroutine.wrap(updateESP)()
+end
+
+-- เชื่อมโยงฟังก์ชัน CharacterAdded กับ player
+player.CharacterAdded:Connect(onCharacterAdded)
+
+-- เรียก onCharacterAdded ครั้งแรกสำหรับ character ปัจจุบัน
+if player.Character then
+    onCharacterAdded(player.Character)
+end
