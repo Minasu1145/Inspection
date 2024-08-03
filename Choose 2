@@ -8,7 +8,7 @@ local function createESP(part, color, playerPosition, customName)
     billboard.Adornee = part
     billboard.Parent = part
     billboard.Size = UDim2.new(0, 200, 0, 50)
-    billboard.StudsOffset = Vector3.new(0, -part.Size.Y/0.6 - 0, 0)
+    billboard.StudsOffset = Vector3.new(0, -part.Size.Y/0.7 - 0, 0)
     billboard.AlwaysOnTop = true
 
     local textLabel = Instance.new("TextLabel")
@@ -17,8 +17,8 @@ local function createESP(part, color, playerPosition, customName)
     textLabel.BackgroundTransparency = 1
     textLabel.TextColor3 = color
     textLabel.TextStrokeTransparency = 0
-    textLabel.Font = Enum.Font.SourceSans
-    textLabel.TextSize = 14
+    textLabel.Font = Enum.Font.Highway
+    textLabel.TextSize = 16
     textLabel.Text = customName
     --  .. "\n " .. math.floor((playerPosition - part.Position).Magnitude) .. " "
 end
@@ -161,5 +161,5 @@ while (true) do
         createHighlight(RockstarChica, espColor)
     end
 
-    wait(3)
+    wait(1)
 end
