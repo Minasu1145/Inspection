@@ -1,0 +1,131 @@
+local function createESP(part, color)
+    local existingBox = part:FindFirstChildOfClass("BoxHandleAdornment")
+    if existingBox then
+        existingBox:Destroy()
+    end
+
+    local boxAdornment = Instance.new("BoxHandleAdornment")
+    boxAdornment.Adornee = part
+    boxAdornment.Parent = part
+    boxAdornment.Size = part.Size
+    boxAdornment.Color3 = color
+    boxAdornment.Transparency = 0.1
+    boxAdornment.LineThickness = 0.1
+    boxAdornment.ZIndex = 0
+end
+
+while true do
+    local Marionette = workspace:FindFirstChild("Marionette")
+    if Marionette and Marionette:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = Marionette.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(87, 57, 163))
+    end
+
+    local GoldenFreddy = workspace:FindFirstChild("Golden Freddy")
+    if GoldenFreddy and GoldenFreddy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = GoldenFreddy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(171, 141, 80))
+    end
+
+    local PhantomFreddy = workspace:FindFirstChild("Phantom Freddy")
+    if PhantomFreddy and PhantomFreddy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomFreddy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local PhantomChica = workspace:FindFirstChild("Phantom Chica")
+    if PhantomChica and PhantomChica:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomChica.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local PhantomFoxy = workspace:FindFirstChild("Phantom Foxy")
+    if PhantomFoxy and PhantomFoxy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomFoxy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local PhantomMangle = workspace:FindFirstChild("Phantom Mangle")
+    if PhantomMangle and PhantomMangle:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomMangle.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local PhantomBalloonBoy = workspace:FindFirstChild("Phantom Balloon Boy")
+    if PhantomBalloonBoy and PhantomBalloonBoy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomBalloonBoy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local PhantomMarionette = workspace:FindFirstChild("Phantom Marionette")
+    if PhantomMarionette and PhantomMarionette:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = PhantomMarionette.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(65, 133, 58))
+    end
+
+    local NightmareFreddy = workspace:FindFirstChild("Nightmare Freddy")
+    if NightmareFreddy and NightmareFreddy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareFreddy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(79, 49, 17))
+    end
+
+    local NightmareBonnie = workspace:FindFirstChild("Nightmare Bonnie")
+    if NightmareBonnie and NightmareBonnie:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareBonnie.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(17, 35, 79))
+    end
+
+    local NightmareChica = workspace:FindFirstChild("Nightmare Chica")
+    if NightmareChica and NightmareChica:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareChica.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(102, 64, 21))
+    end
+
+    local NightmareFoxy = workspace:FindFirstChild("Nightmare Foxy")
+    if NightmareFoxy and NightmareFoxy:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareFoxy.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(102, 40, 21))
+    end
+
+    local NightmareMangle = workspace:FindFirstChild("Nightmare Mangle")
+    if NightmareMangle and NightmareMangle:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareMangle.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(97, 21, 102))
+    end
+
+    local NightmareFredbear = workspace:FindFirstChild("Nightmare Fredbear")
+    if NightmareFredbear and NightmareFredbear:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = NightmareFredbear.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(21, 102, 99))
+    end
+
+    local Nightmare = workspace:FindFirstChild("Nightmare")
+    if Nightmare and Nightmare:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = Nightmare.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(78, 92, 91))
+    end
+
+    local Nightmarionne = workspace:FindFirstChild("Nightmarionne")
+    if Nightmarionne and Nightmarionne:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = Nightmarionne.HumanoidRootPart
+
+        createESP(humanoidRootPart, Color3.fromRGB(219, 219, 219))
+    end
+
+    wait(1)
+end
