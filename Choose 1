@@ -535,5 +535,5 @@ while (true) do
         createHighlight(FuntimeChica, espColor)
     end
 
-    wait(1)
+    wait(3)
 end
