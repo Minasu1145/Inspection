@@ -1,0 +1,31 @@
+-- ฟังก์ชันที่จะปรับค่า Transparency ของ Part ให้เป็น 0
+local function setTransparency(part)
+    if part:IsA("BasePart") then
+        part.Transparency = 0.6
+    end
+end
+
+-- ทำงานให้กับ Part ที่มีอยู่ใน Workspace ที่ระบุ
+local function updateTransparencyInWorkspace(targetWorkspace)
+    for _, part in pairs(targetWorkspace:GetDescendants()) do
+        setTransparency(part)
+    end
+end
+
+-- รายชื่อของ Workspace ที่ต้องการ
+local workspaceNames = {
+
+    "Nightmare Mangle",
+    "Nightmare Fredbear",
+    "Nightmare"
+}
+
+-- สร้างการเช็คที่สม่ำเสมอ
+game:GetService("RunService").Stepped:Connect(function()
+    for _, name in pairs(workspaceNames) do
+        local targetWorkspace = game.Workspace:FindFirstChild(name)
+        if targetWorkspace then
+            updateTransparencyInWorkspace(targetWorkspace)
+        end
+    end
+end)
