@@ -257,5 +257,5 @@ while (true) do
         createHighlight(ShadowFreddy, espColor)
     end
 
-    wait(3)
+    wait(10)
 end
