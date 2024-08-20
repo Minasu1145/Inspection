@@ -41,29 +41,6 @@ end
 while (true) do
     local playerPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 
-    for _, part in pairs(workspace:GetDescendants()) do
-        if part:IsA("BasePart") and (part.Name == "ItemCoin" or part.Name == "ItemPartyCupcake" or (part.Name == "Body" and part.Parent and part.Parent.Name == "Parrot") or (part.Name == "ItemNachos" and part.Parent and part.Parent.Name == "Freddle1")) then
-            -- กำหนดชื่อที่กำหนดเองสำหรับ ItemCoin, ItemPartyCupcake, Parrot.Body หรือ Freddle1.Torso
-            local customName
-            if part.Name == "ItemCoin" then
-                customName = "Coin"
-            elseif part.Name == "ItemPartyCupcake" then
-                customName = "Cupcake"
-            elseif part.Name == "ItemNachos" then
-                customName = "Nachos"
-            elseif part.Name == "Parrot" and part.Parent and part.Parent.Name == "Parrot" then
-                customName = "Parrot"
-            elseif part.Name == "Torso" and part.Parent and part.Parent.Name == "Freddle1" then
-                customName = "Freddle"
-            end
-            local espColor = Color3.fromRGB(0, 255, 0)
-
-            createESP(part, espColor, playerPosition, customName)
-            
-            createHighlight(part, espColor)
-        end
-    end
-
     -- Five Nights at Freddy's 1
     local freddy = workspace:FindFirstChild("Freddy")
     if (freddy and freddy:FindFirstChild("HumanoidRootPart")) then
@@ -537,5 +514,5 @@ while (true) do
         createHighlight(FuntimeChica, espColor)
     end
 
-    wait(3)
+    wait(10)
 end
