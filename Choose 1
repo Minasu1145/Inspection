@@ -308,16 +308,16 @@ while (true) do
         createHighlight(PhantomMangle, espColor)
     end
 
-    local PhantomBalloonBoy = workspace:FindFirstChild("Phantom Balloon Boy")
-    if (PhantomBalloonBoy and PhantomBalloonBoy:FindFirstChild("HumanoidRootPart")) then
-        local humanoidRootPart = PhantomBalloonBoy.HumanoidRootPart
+    local PhantomBB = workspace:FindFirstChild("Phantom BB")
+    if (PhantomBB and PhantomBB:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = PhantomBB.HumanoidRootPart
 
-        local customName = "Phantom Balloon Boy"
+        local customName = "Phantom BB"
         local espColor = Color3.fromRGB(65, 133, 58)
 
         createESP(humanoidRootPart, espColor, playerPosition, customName)
 
-        createHighlight(PhantomBalloonBoy, espColor)
+        createHighlight(PhantomBB, espColor)
     end
 
     local PhantomMarionette = workspace:FindFirstChild("Phantom Marionette")
