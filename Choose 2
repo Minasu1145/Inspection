@@ -245,6 +245,78 @@ while (true) do
         createHighlight(ShadowBonnie, espColor)
     end
 
+    local MrCanDo = workspace:FindFirstChild("Mr Can Do")
+    if (MrCanDo and MrCanDo:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = MrCanDo.HumanoidRootPart
+
+        local customName = "Mr Can Do"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(MrCanDo, espColor)
+    end
+
+    local MrHugs = workspace:FindFirstChild("Mr Hugs")
+    if (MrHugs and MrHugs:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = MrHugs.HumanoidRootPart
+
+        local customName = "Mr Hugs"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(MrHugs, espColor)
+    end
+
+    local MrHugs = workspace:FindFirstChild("Mr Hugs")
+    if (MrHugs and MrHugs:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = MrHugs.HumanoidRootPart
+
+        local customName = "Mr Hugs"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(MrHugs, espColor)
+    end
+
+    local BucketBob = workspace:FindFirstChild("Bucket Bob")
+    if (BucketBob and BucketBob:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = BucketBob.HumanoidRootPart
+
+        local customName = "Bucket Bob"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(BucketBob, espColor)
+    end
+
+    local No1Crate = workspace:FindFirstChild("No 1 Crate")
+    if (No1Crate and No1Crate:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = No1Crate.HumanoidRootPart
+
+        local customName = "No 1 Crate"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(No1Crate, espColor)
+    end
+
+    local GoldenMrHugs = workspace:FindFirstChild("Golden Mr Hugs")
+    if (GoldenMrHugs and GoldenMrHugs:FindFirstChild("HumanoidRootPart")) then
+        local humanoidRootPart = GoldenMrHugs.HumanoidRootPart
+
+        local customName = "Golden Mr Hugs"
+        local espColor = Color3.fromRGB(132, 67, 153)
+
+        createESP(humanoidRootPart, espColor, playerPosition, customName)
+
+        createHighlight(GoldenMrHugs, espColor)
+    end
+
     local ShadowFreddy = workspace:FindFirstChild("Shadow Freddy")
     if (ShadowFreddy and ShadowFreddy:FindFirstChild("HumanoidRootPart")) then
         local humanoidRootPart = ShadowFreddy.HumanoidRootPart
