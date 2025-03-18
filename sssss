@@ -1,0 +1,224 @@
+-- Path: ServerScriptService/GameManager (Script)
+
+local Players = game:GetService("Players")
+local Teams = game:GetService("Teams")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local remoteEvents = ReplicatedStorage:WaitForChild("RemoteEvents")
+local startCountdownEvent = remoteEvents:WaitForChild("StartCountdown")
+local cancelCountdownEvent = remoteEvents:WaitForChild("CancelCountdown")
+local updateCountdownEvent = remoteEvents:WaitForChild("UpdateCountdown")
+local startGameEvent = remoteEvents:WaitForChild("StartGame")
+local showMessageEvent = remoteEvents:WaitForChild("ShowMessage")
+local gameOverEvent = remoteEvents:WaitForChild("GameOver")
+
+local lobbyTeam = Teams:WaitForChild("Lobby")
+local survivalTeam = Teams:WaitForChild("Survival")
+local killerTeam = Teams:WaitForChild("Killer")
+
+local LOBBY_SPAWN = workspace:WaitForChild("LobbySpawn")
+local SURVIVOR_SPAWN = workspace:WaitForChild("SurvivorSpawn")
+local KILLER_SPAWN = workspace:WaitForChild("KillerSpawn")
+
+local MIN_PLAYERS_TO_START = 2
+local COUNTDOWN_TIME = 10
+local KILLER_DELAY = 10
+local ROUND_TIME = 120  -- 2 �ҷ�
+
+-- �������Ҿ��
+local inCountdown = false
+local inGame = false
+
+-- �ѧ��ѹ�礨ӹǹ������㹷�� Lobby
+local function getLobbyPlayersCount()
+	local count = 0
+	for _, player in pairs(Players:GetPlayers()) do
+		if player.Team == lobbyTeam then
+			count += 1
+		end
+	end
+	return count
+end
+
+-- �ѧ��ѹ���� Killer
+local function selectKillerAndAssignTeams()
+	local allPlayers = Players:GetPlayers()
+	-- ���� killer �ҡ�����蹷������ Lobby (���ͨ������ҡ allPlayers ���� ����ǹ�˭��繨ҡ Lobby)
+	local lobbyPlayers = {}
+	for _, p in pairs(allPlayers) do
+		if p.Team == lobbyTeam then
+			table.insert(lobbyPlayers, p)
+		end
+	end
+
+	if #lobbyPlayers == 0 then
+		return nil  -- ������������ Lobby
+	end
+
+	local killerIndex = math.random(1, #lobbyPlayers)
+	local killer = lobbyPlayers[killerIndex]
+
+	-- Assign ���
+	for _, p in pairs(lobbyPlayers) do
+		if p == killer then
+			p.Team = killerTeam
+		else
+			p.Team = survivalTeam
+		end
+	end
+	return killer
+end
+
+-- �ѧ��ѹ��ž���
+local function teleportPlayers()
+	-- Teleport Survival ��͹
+	for _, player in pairs(Players:GetPlayers()) do
+		if player.Team == survivalTeam then
+			if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+				player.Character:MoveTo(SURVIVOR_SPAWN.Position)
+			end
+		end
+	end
+
+	-- ˹�ǧ���� 10 �Թҷ� ��͹�� Killer
+	wait(KILLER_DELAY)
+
+	for _, player in pairs(Players:GetPlayers()) do
+		if player.Team == killerTeam then
+			if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+				player.Character:MoveTo(KILLER_SPAWN.Position)
+			end
+		end
+	end
+end
+
+-- �ѧ��ѹ������ͺ��
+local function startRound()
+	inGame = true
+
+	-- ���� killer
+	local killer = selectKillerAndAssignTeams()
+	if not killer then
+		-- �ó�����ռ������ Lobby
+		return
+	end
+
+	local ServerStorage = game:GetService("ServerStorage")
+	local killerTool = ServerStorage:FindFirstChild("KillerTool")
+	if killerTool then
+		-- ������ Tool
+		local toolClone = killerTool:Clone()
+
+		-- ��������Ф� Killer �Դ
+		local killerCharacter = killer.Character or killer.CharacterAdded:Wait()
+
+		-- ��� Tool � Character �ͧ Killer
+		toolClone.Parent = killerCharacter
+	end
+
+	-- �駢�ͤ�����Ҽ����蹤��˹���� Killer
+	local msg = killer.Name .. " is the KILLER!"
+	showMessageEvent:FireAllClients(msg)
+	print(msg)  -- ��� console (��ҵ�ͧ���)
+
+	-- ��ž���
+	teleportPlayers()
+
+	-- �����ҧ˹�ǧ������ Killer ���͡ Survivor ��� �Killer will come in X seconds� 
+	-- (�Ҩ�� RemoteEvent ��ѻവ GUI ��觼����� Survival ���� 
+	--  ���Ͷ�ҨЧ��� � �� showMessageEvent:FireAllClients("Killer will come in 10 seconds.") )
+
+	-- ������Ѻ���� 2 �ҷ�
+	local timeLeft = ROUND_TIME
+	while timeLeft > 0 and inGame do
+		-- �����͹���Ҽ���ʹ���Ե��������ѧ
+		local survivalCount = 0
+		for _, p in pairs(Players:GetPlayers()) do
+			if p.Team == survivalTeam then
+				survivalCount += 1
+			end
+		end
+		if survivalCount == 0 then
+			-- Killer ���
+			print("All survivors are dead or left. Killer wins!")
+			gameOverEvent:FireAllClients("Killer", killer)
+			break
+		end
+
+		-- �ѻവ����
+		timeLeft -= 1
+		if timeLeft % 30 == 0 then
+			showMessageEvent:FireAllClients("Time left: "..timeLeft.." seconds.")
+		end
+		wait(1)
+	end
+
+	-- ��� timeLeft == 0 ����ѧ inGame ���� �ʴ���� Survivor ���
+	if timeLeft <= 0 and inGame then
+		print("Time is up. Survivors win!")
+		gameOverEvent:FireAllClients("Survivors", nil)
+	end
+
+	-- ���ͺ
+	inGame = false
+
+	-- ���絷ء����Ѻ� Lobby
+	for _, p in pairs(Players:GetPlayers()) do
+		p.Team = lobbyTeam
+		if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+			p.Character:MoveTo(LOBBY_SPAWN.Position)
+		end
+	end
+end
+
+-- �ѧ��ѹ������Ѻ�����ѧ
+local function startCountdown()
+	inCountdown = true
+	local timeLeft = COUNTDOWN_TIME
+
+	while timeLeft > 0 and inCountdown do
+		-- ����Ҽ������ Lobby �ѧ >= MIN_PLAYERS_TO_START ���
+		if getLobbyPlayersCount() < MIN_PLAYERS_TO_START then
+			-- ���Ŵŧ ��¡��ԡ
+			cancelCountdownEvent:FireAllClients()
+			inCountdown = false
+			return
+		end
+
+		updateCountdownEvent:FireAllClients(timeLeft) 
+		wait(1)
+		timeLeft -= 1
+	end
+
+	if inCountdown then
+		-- �Ѻ�֧ 0
+		startGameEvent:FireAllClients()
+		startRound()
+		inCountdown = false
+	end
+end
+
+-- ������ռ�������������� ����礨ӹǹ������ ����ѧ��� inCountdown ����ѧ��� inGame
+Players.PlayerAdded:Connect(function(player)
+	-- ��˹���� Lobby
+	player.Team = lobbyTeam
+
+	if not inCountdown and not inGame then
+		if getLobbyPlayersCount() >= MIN_PLAYERS_TO_START then
+			-- ������Ѻ�����ѧ
+			startCountdown()
+		end
+	end
+end)
+
+-- ������ռ������͡
+Players.PlayerRemoving:Connect(function(player)
+	-- ������������ҧ�Ѻ�����ѧ
+	if inCountdown and not inGame then
+		if getLobbyPlayersCount() - 1 < MIN_PLAYERS_TO_START then
+			-- ¡��ԡ
+			cancelCountdownEvent:FireAllClients()
+			inCountdown = false
+		end
+	end
+end)
