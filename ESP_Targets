@@ -1,0 +1,78 @@
+-- ESP_Targets.lua
+return {
+    -- Items
+    ["ItemCoin"] = {alias = "Coin", color = Color3.fromRGB(0,255,0)},
+    ["ItemPartyCupcake"] = {alias = "Cupcake", color = Color3.fromRGB(0,255,0)},
+    ["Body"] = {alias = "Parrot", parentName = "Parrot", color = Color3.fromRGB(0,255,0)},
+    ["Torso"] = {alias = "Freddle", parentName = "Freddle1", color = Color3.fromRGB(0,255,0)},
+
+    -- FNaF 1
+    Freddy = {color = Color3.fromRGB(87,46,28)},
+    Bonnie = {color = Color3.fromRGB(75,38,81)},
+    Chica = {color = Color3.fromRGB(149,134,19)},
+    Foxy = {color = Color3.fromRGB(126,24,19)},
+
+    -- FNaF 2
+    ["Toy Freddy"] = {color = Color3.fromRGB(161,71,37)},
+    ["Toy Bonnie"] = {color = Color3.fromRGB(77,205,225)},
+    ["Toy Chica"] = {color = Color3.fromRGB(188,149,35)},
+    ["Toy Foxy"] = {color = Color3.fromRGB(163,118,157)},
+    Mangle = {color = Color3.fromRGB(163,110,157)},
+    BB = {color = Color3.fromRGB(48,63,159)},
+    JJ = {color = Color3.fromRGB(126,66,163)},
+    Marionette = {color = Color3.fromRGB(87,57,163)},
+    ["Withered Freddy"] = {color = Color3.fromRGB(67,37,24)},
+    ["Withered Bonnie"] = {color = Color3.fromRGB(40,60,122)},
+    ["Withered Chica"] = {color = Color3.fromRGB(143,127,39)},
+    ["Withered Foxy"] = {color = Color3.fromRGB(112,47,47)},
+    ["Golden Freddy"] = {color = Color3.fromRGB(171,141,80)},
+
+    -- FNaF 3
+    Springtrap = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Freddy"] = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Chica"] = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Foxy"] = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Mangle"] = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Balloon Boy"] = {color = Color3.fromRGB(65,133,58)},
+    ["Phantom Marionette"] = {color = Color3.fromRGB(65,133,58)},
+
+    -- FNaF 4
+    ["Nightmare Freddy"] = {color = Color3.fromRGB(79,49,17)},
+    ["Nightmare Bonnie"] = {color = Color3.fromRGB(17,35,79)},
+    ["Nightmare Chica"] = {color = Color3.fromRGB(102,64,21)},
+    ["Nightmare Foxy"] = {color = Color3.fromRGB(102,40,21)},
+    ["Nightmare Mangle"] = {color = Color3.fromRGB(97,21,102)},
+    ["Nightmare Fredbear"] = {color = Color3.fromRGB(21,102,99)},
+    Nightmare = {color = Color3.fromRGB(78,92,91)},
+    Nightmarionne = {color = Color3.fromRGB(219,219,219)},
+    ["Nightmare BB"] = {color = Color3.fromRGB(58,28,97)},
+
+    -- Sister Location
+    ["Circus Baby"] = {color = Color3.fromRGB(201,46,103)},
+    Ballora = {color = Color3.fromRGB(46,92,201)},
+    ["Funtime Freddy"] = {color = Color3.fromRGB(126,46,201)},
+    Ennard = {color = Color3.fromRGB(173,151,194)},
+    ["Funtime Foxy"] = {color = Color3.fromRGB(181,42,160)},
+    ["Funtime Chica"] = {color = Color3.fromRGB(232,158,230)},
+
+    -- UCN / Etc
+    ["Rockstar Freddy"] = {color = Color3.fromRGB(158,122,33)},
+    ["Molten Freddy"] = {color = Color3.fromRGB(82,78,68)},
+    Elizabeth = {color = Color3.fromRGB(255,111,8)},
+    ["Rockstar Bonnie"] = {color = Color3.fromRGB(33,87,158)},
+    Lefty = {color = Color3.fromRGB(46,45,41)},
+    ["El Chip"] = {color = Color3.fromRGB(74,51,42)},
+    Afton = {color = Color3.fromRGB(110,98,53)},
+    ["Rockstar Foxy"] = {color = Color3.fromRGB(212,51,51)},
+    ["Music Man"] = {color = Color3.fromRGB(137,51,212)},
+    ["Rockstar Chica"] = {color = Color3.fromRGB(158,152,33)},
+    Bidybab = {color = Color3.fromRGB(227,189,145)},
+    ["Endo 02"] = {color = Color3.fromRGB(140,163,189)},
+    Helpy = {color = Color3.fromRGB(158,152,33)},
+    Minireenas = {color = Color3.fromRGB(191,177,155)},
+    ["Mr. Hippo"] = {color = Color3.fromRGB(132,67,153)},
+    ["Phone Guy"] = {color = Color3.fromRGB(132,67,153)},
+    Plushtrap = {color = Color3.fromRGB(81,115,78)},
+    ["Shadow Bonnie"] = {color = Color3.fromRGB(32,34,36)},
+    ["Shadow Freddy"] = {color = Color3.fromRGB(32,34,36)},
+}
